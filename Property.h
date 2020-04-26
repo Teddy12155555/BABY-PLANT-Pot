@@ -11,6 +11,11 @@
 int meledy[7] = {NOTE_A3, NOTE_A3, NOTE_B3, NOTE_A3, NOTE_G3, NOTE_B3, NOTE_A4};
 int noteDurations[7] = {
     4, 4, 4, 4, 4, 4, 4};
+// D F G B G
+int notice[5] = {
+    NOTE_D3,NOTE_F3,NOTE_G3,NOTE_B3,NOTE_G3
+};
+int Durations[7] = {4,4,4,4,4};
 
 // Speaker play func
 void PlayTone(int tones, int Melody[], int Durations[])
@@ -18,7 +23,7 @@ void PlayTone(int tones, int Melody[], int Durations[])
     for (int thisNote = 0; thisNote < tones; thisNote++)
     {
         int noteDuration = 1000 / noteDurations[thisNote];
-        tone(SPEAKER_PIN, melody[thisNote], noteDuration);
+        tone(SPEAKER_PIN, meledy[thisNote], noteDuration);
         int pauseBetweenNotes = noteDuration * 1.30;
         delay(pauseBetweenNotes);
         noTone(SPEAKER_PIN);

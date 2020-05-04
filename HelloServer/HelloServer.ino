@@ -2,8 +2,13 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#include <SoftwareSerial.h>
+#include <DFPlayerMini_Fast.h>
 
 #define SENT "<html><head><title>BABY-PLANT POT</title></head><body><div style=\"background-color: powderblue;\">Sent Emotion Score</div></body></html>"
+
+SoftwareSerial mySerial(10,11);
+DFPlayerMini_Fast myMP3;
 
 const char *ssid = "Teddy";
 const char *password = "880307880307";
@@ -40,7 +45,11 @@ void setup(void)
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.println("");
-
+  //MP3
+  mySerial.begin(9600);
+  myMP3.begin(mySerial);
+  myMP3.volume(20);
+  
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -67,21 +76,25 @@ void setup(void)
     server.send(200, "text/html", SENT);
     Serial.println("Emotion in range 1");
     // Play()
+    myMP3.paly(1);
   });
   server.on("/2", []() {
     server.send(200, "text/html", SENT);
     Serial.println("Emotion in range 2");
     // Play()
+    myMP3.play(2);
   });
   server.on("/3", []() {
     server.send(200, "text/html", SENT);
     Serial.println("Emotion in range 3");
     // Play()
+    myMP3.play(3)
   });
   server.on("/4", []() {
     server.send(200, "text/html", SENT);
     Serial.println("Emotion in range 4");
     // Play()
+    myMP3.play(4)
   });
   server.on("/0", []() {
     server.send(200, "text/html", SENT);

@@ -6,6 +6,7 @@
 #define BisObstaclePin 3
 #define CisObstaclePin 4
 #define SPEAKER_PIN 0
+
 // Melody
 // A A B A G B 高音C
 int meledy[7] = {NOTE_A3, NOTE_A3, NOTE_B3, NOTE_A3, NOTE_G3, NOTE_B3, NOTE_A4};

@@ -18,6 +18,7 @@ void setup()
   pinMode(AisObstaclePin, INPUT);
   pinMode(BisObstaclePin, INPUT);
   pinMode(CisObstaclePin, INPUT);
+  pinMode(SPEAKER_PIN, INPUT);
   Serial.begin(9600);
 }
 
